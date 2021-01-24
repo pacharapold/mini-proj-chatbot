@@ -4,7 +4,7 @@
   "description": "imi api server",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -b -v",
+    "build": "npm ci && tsc -b -v",
     "clean": "tsc -b --clean",
     "start": "NODE_ENV=production node ./dist/index.js",
     "dev": "NODE_ENV=development node ./dist/index.js",
