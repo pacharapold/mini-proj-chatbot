@@ -1,0 +1,49 @@
+# My Variables
+@contentType = application/json
+# @baseUrl = http://localhost:9999/api
+@baseUrl = https://private.gwalletdev.com/api
+
+###
+# @name helloSms
+GET {{baseUrl}}/sms/hello
+Content-Type:  {{contentType}}
+
+###
+# @name OperatorLogin
+POST {{baseUrl}}/public/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "agent01",
+    "password": "miss@Pass01"
+}
+
+###
+# @name SmsDeviceRegister
+@authToken = {{OperatorLogin.response.body.token}}
+POST {{baseUrl}}/office/sms-device/register
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "key": "018620b16514d07a",
+    "remark": "oppoMobile"
+}
+
+###
+# @name SmsGetOtp
+GET {{baseUrl}}/sms/JJNH
+Content-Type:  {{contentType}}
+
+###
+# @name SmsNewMsgKbank
+POST {{baseUrl}}/sms/push
+Content-Type:  {{contentType}}
+
+{
+    "smsDevice": "018620b16514d07a",
+    "sender": "KBank",
+    "message": "27/08/63 21:45 บชX354518X รับโอนจากX112222X 1000.00บ คงเหลือ2902.50บ",
+    "timestamp": 1598539532777,
+    "uuid": "44a17b96-544a-4027-94a8-c8a3366d962f"
+}

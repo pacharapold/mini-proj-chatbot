@@ -1,0 +1,8 @@
+export enum Game {
+  BACCARAT = 'BACCARAT',
+  TIGER_DRAGON = 'TIGER_DRAGON',
+  ROULETTE = 'ROULETTE',
+  SLOT = 'SLOT',
+  SOCCER = 'SOCCER',
+  OTHER = 'OTHER',
+}

@@ -1,0 +1,20 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+@site = jumbo789
+
+###
+# @name getUiVersion(front)
+GET {{baseUrl}}/ui-version
+Content-Type:  {{contentType}}
+Site: {{site}}
+
+###
+# @name updateUiVersion(front)
+POST {{baseUrl}}/ui-version
+Content-Type:  {{contentType}}
+Site: {{site}}
+
+{
+  "version": "100"
+}

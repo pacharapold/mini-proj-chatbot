@@ -1,0 +1,23 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier",
+    "tslint-config-airbnb",
+    "tslint-no-unused-expression-chai"
+  ],
+  "jsRules": {},
+  "rules": {
+    "quotemark": [true, "single"],
+    "ter-arrow-parens": false,
+    "prefer-const": true,
+    "variable-name": false,
+    "import-name": false,
+    "no-increment-decrement": false,
+    "max-classes-per-file": true,
+    "no-console": false,
+    "no-floating-promises": true,
+    "no-shadowed-variable": false
+  },
+  "rulesDirectory": []
+}

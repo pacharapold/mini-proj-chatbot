@@ -1,0 +1,89 @@
+# My Variables
+@contentType = application/json
+# @baseUrl = https://api.gwalletdev.com/api
+@baseUrl = http://localhost:9999/api
+@site = jumbo789
+
+# @name GamblerLogin
+POST {{baseUrl}}/public/login
+Content-Type:  {{contentType}}
+Site: {{site}}
+
+{
+    "username": "i78aa9749",
+    "password": "miss@Pass01",
+    "remember": true,
+    "impersonate": false
+}
+###
+@authToken = {{GamblerLogin.response.body.token}}
+
+###
+# @name GamblerTest
+GET {{baseUrl}}/gambler/test
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+###
+# @name GamblerChangePassword
+POST {{baseUrl}}/gambler/change-password
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+site: {{site}}
+
+{
+    "oldPassword": "miss@Pass01",
+    "newPassword": "miss@Pass02"
+}
+
+###
+# @name GamblerDeposit
+GET {{baseUrl}}/gambler/deposit
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+site: {{site}}
+
+###
+# @name GamblerProfile
+GET {{baseUrl}}/gambler/profile
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+site: {{site}}
+
+###
+# @name GamblerRefreshBalance
+GET {{baseUrl}}/gambler/refresh
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+site: {{site}}
+
+###
+# @name GamblerWithdraw
+POST {{baseUrl}}/gambler/withdraw
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+site: {{site}}
+
+{
+    "amount": 100
+}
+
+###
+# @name GamblerPlayHistory
+POST {{baseUrl}}/gambler/play-history
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+site: {{site}}
+
+{
+    "pagination": {
+        "page": 1,
+        "itemsPerPage": 100
+    }
+}
+
+###
+# @name imiPlay
+GET {{baseUrl}}/gambler/play
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}

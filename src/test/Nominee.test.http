@@ -1,0 +1,51 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+
+###
+# @name AdminLogin
+POST {{baseUrl}}/public/office/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "admin",
+    "password": "kkmjl"
+    
+}
+
+###
+# @name createNominee
+@authToken = {{AdminLogin.response.body.token}}
+POST {{baseUrl}}/office/nominee
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "fullName": "John",
+  "telNo": "0841234567",
+  "alias": "Mr.J"
+}
+
+###
+# @name searchNomineeList
+@authToken = {{AdminLogin.response.body.token}}
+POST {{baseUrl}}/office/nominee/list
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "pagination": {
+    "page": 1,
+    "itemsPerPage": 10
+  },
+  "text": "nut"
+}
+
+###
+# @name nomineeFilter
+@authToken = {{AdminLogin.response.body.token}}
+GET {{baseUrl}}/office/nominee/filter
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+

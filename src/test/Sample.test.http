@@ -1,0 +1,19 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+# @baseUrl = https://api.gwalletdev.com/api
+
+
+###
+# @name hello
+GET {{baseUrl}}/api/hello/queue
+Content-Type:  {{contentType}}
+###
+# @name WebSocket
+POST {{baseUrl}}/api/hello/foo
+Content-Type:  {{contentType}}
+
+{
+    "name": "test",
+    "age": "23"
+}

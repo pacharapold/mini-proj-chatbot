@@ -1,0 +1,56 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+
+###
+# @name AdminLogin
+POST {{baseUrl}}/public/office/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "admin",
+    "password": "kkmjl"
+    
+}
+
+
+###
+# @name CreatePuppeteerChannel
+@authToken = {{AdminLogin.response.body.token}}
+POST {{baseUrl}}/office/puppeteer
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "ipAddress": "1.1.1.10",
+  "owner": "KBANK",
+  "subOwner": "0108511452",
+  "type": "BANK"
+}
+
+###
+# @name UpdatePuppeteerChannel
+@authToken = {{AdminLogin.response.body.token}}
+PUT {{baseUrl}}/office/puppeteer
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "puppeteerChannelId": 1594984733418,
+  "active": true
+}
+
+###
+# @name PuppeteerChannelList
+POST {{baseUrl}}/office/puppeteer/list
+Content-Type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "pagination": {
+    "page": 1,
+    "itemsPerPage": 10
+  },
+  "text": "",
+  "active": false
+}

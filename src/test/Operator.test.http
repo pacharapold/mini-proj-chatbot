@@ -1,0 +1,23 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+
+
+###
+# @name OperatorLogin
+POST {{baseUrl}}/private/office/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "agent01",
+    "password": "miss@Pass01"
+    
+}
+
+###
+# @name OperatorGetProfile
+@authToken = {{OperatorLogin.response.body.token}}
+GET {{baseUrl}}/office/profile
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+

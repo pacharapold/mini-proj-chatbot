@@ -1,0 +1,32 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+# @baseUrl = https://api.gwalletdev.com/api
+###
+# @name GetDefaultConfigs
+GET {{baseUrl}}/public/config
+Content-Type:  {{contentType}}
+
+###
+# @name SupervisorLogin
+POST {{baseUrl}}/private/office/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "agent01",
+    "password": "miss@Pass01"
+    
+}
+
+###
+# @name UpdateConfig
+@authToken = {{SupervisorLogin.response.body.token}}
+PUT {{baseUrl}}/config/default
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "topic" : "MINIMUM_DEPOSIT_AMOUNT",
+    "value": 112
+    
+}

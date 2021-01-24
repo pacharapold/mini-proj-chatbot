@@ -1,0 +1,10 @@
+export enum SocialType {
+  FACEBOOK = 'FACEBOOK',
+  LINE = 'LINE',
+  GOOGLE = 'GOOGLE',
+  YOUTUBE = 'YOUTUBE',
+  INSTAGRAM = 'INSTAGRAM',
+  SMS = 'SMS',
+  FRIEND = 'FRIEND',
+  OTHER = 'OTHER',
+}

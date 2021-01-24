@@ -1,0 +1,23 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+
+###
+# @name GamblerLogin
+POST {{baseUrl}}/public/login
+Content-Type:  {{contentType}}
+
+{
+    "telNo": "0645196343",
+    "password": "miss@Pass01",
+    "remember": true
+}
+
+###
+@authToken = {{GamblerLogin.response.body.token}}
+
+###
+# @name RefreshToken
+GET {{baseUrl}}/token/refresh
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}

@@ -1,0 +1,21 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+
+###
+# @name SupervisorLogin
+POST {{baseUrl}}/public/office/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "agent01",
+    "password": "miss@Pass01"
+    
+}
+
+###
+# @name SupervisorGetProfile
+@authToken = {{SupervisorLogin.response.body.token}}
+GET {{baseUrl}}/office/profile
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}

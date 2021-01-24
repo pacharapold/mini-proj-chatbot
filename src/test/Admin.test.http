@@ -1,0 +1,50 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+
+###
+# @name AdminLogin
+POST {{baseUrl}}/private/office/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "admin",
+    "password": "kkmjl"
+    
+}
+
+###
+# @name AdminGetProfile
+@authToken = {{AdminLogin.response.body.token}}
+GET {{baseUrl}}/office/profile
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+###
+# @name NewOperator
+@authToken = {{AdminLogin.response.body.token}}
+POST {{baseUrl}}/admin/operator/register
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "name": "agent06",
+    "username": "agent06",
+    "password": "miss@Pass01",
+    "telNo": "0844720961",
+    "role": "SUPERVISOR"
+}
+
+###
+# @name OperatorFilter
+POST {{baseUrl}}/admin/operator/filter
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "text" : "",
+    "pagination": {
+        "page": 1,
+        "pageSize": 5
+    }
+}

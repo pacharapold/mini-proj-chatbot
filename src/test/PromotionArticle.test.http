@@ -1,0 +1,42 @@
+# My Variables
+@contentType = application/json
+#@baseUrl = https://api.gwalletdev.com/api
+@baseUrl = http://localhost:9999/api
+@site = jumbo789
+###
+# @name Promotion
+GET {{baseUrl}}/promotion/article/7
+Content-Type:  {{contentType}}
+Site: {{site}}
+
+###
+# @name AllPromotionArticle
+GET {{baseUrl}}/promotion/article
+Content-Type:  {{contentType}}
+Site: {{site}}
+
+###
+# @name GamblerLogin
+POST {{baseUrl}}/public/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "i78aa0098",
+    "password": "miss@Pass01",
+    "remember": true,
+    "impersonate": true
+}
+###
+@authToken = {{GamblerLogin.response.body.token}}
+
+###
+# @name AcceptCommission
+PUT  {{baseUrl}}/promotion/commission/accept/1
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+###
+# @name getCommission
+GET {{baseUrl}}/promotion/commission/
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}

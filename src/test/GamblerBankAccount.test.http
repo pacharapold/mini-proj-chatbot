@@ -1,0 +1,26 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+
+###
+# @name SupervisorLogin
+POST {{baseUrl}}/public/office/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "agent01",
+    "password": "miss@Pass01"
+    
+}
+
+###
+# @name UpdateBank
+POST {{baseUrl}}/office/gambler/bank/update
+Content-Type:  {{contentType}}
+
+{
+    "GamblerId": 1,
+    "bankCode" : "SCB",
+    "accountNo" : "0987654321",
+    "accountName" : "RABB Pig"
+}

@@ -1,0 +1,153 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+
+###
+# @name OperatorLogin
+POST {{baseUrl}}/private/office/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "agent01",
+    "password": "miss@Pass01"
+    
+}
+
+###
+# @name OperatorGetGamblerFilter
+@authToken = {{OperatorLogin.response.body.token}}
+POST {{baseUrl}}/office/gambler
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "pagination": 
+    {
+        "page": 1,
+        "pageSize": 1
+    },
+    "telNo" : ""
+
+}
+
+
+###
+# @name OperatorGetGamblerBankFilter
+@authToken = {{OperatorLogin.response.body.token}}
+POST {{baseUrl}}/office/gambler/bank
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "pagination": 
+    {
+        "page": 1,
+        "pageSize": 2
+    },
+    "lockWithdraw" :  true,
+    "bankCode" : "SCB",
+    "active" : true,
+    "accountNameRetrieved" : true
+}
+
+###
+# @name GetGamblerTransaction
+@authToken = {{OperatorLogin.response.body.token}}
+POST {{baseUrl}}/office/gambler/transaction
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "pagination": 
+    {
+        "page": 1,
+        "pageSize": 2
+    },
+    "stratDate" : "2020-01-02",
+    "endDate" : "2020-01-01",
+    "text" : "09",
+    "type" : "DEPOSIT"
+}
+
+
+###
+# @name GetGamblerTransaction
+@authToken = {{OperatorLogin.response.body.token}}
+POST {{baseUrl}}/office/gambler/bank/lockwithdraw
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "GamblerId" : 2,
+    "lockWithdraw" : true
+}
+
+###
+# @name GetSms
+@authToken = {{OperatorLogin.response.body.token}}
+POST {{baseUrl}}/office/sms
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "pagination": 
+    {
+        "page": 1,
+        "pageSize": 2
+    },
+    "text": "",
+    "executed": true,
+    "stratDate" : "2020-01-02",
+    "endDate" : "2020-01-01",
+    "smsDeviceId": 123,
+    "haveBalanceChange": true
+}
+
+###
+# @name GetSmsDevices
+@authToken = {{OperatorLogin.response.body.token}}
+POST {{baseUrl}}/office/sms-device
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "pagination": 
+    {
+        "page": 1,
+        "pageSize": 2
+    },
+    "text": ""
+
+}
+
+###
+# @name RegisterNewSmsDevices
+@authToken = {{OperatorLogin.response.body.token}}
+POST {{baseUrl}}/office/sms-device/register
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "key": "018620b16514d07a",
+    "remark": "oppoMobile"
+}
+
+###
+# @name BankMsgLists
+POST {{baseUrl}}/office/bankMsg
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "text": null,
+    "executed": null,
+    "startDate": null,
+    "endDate": null,
+    "haveBalanceChange": null,
+    "nomineeBankAccountId": null,
+    "pagination": {
+        "page": 1,
+        "pageSize": 1
+    }
+}
+

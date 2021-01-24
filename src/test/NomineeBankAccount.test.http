@@ -1,0 +1,71 @@
+# My Variables
+@contentType = application/json
+@baseUrl = http://localhost:9999/api
+
+###
+# @name AdminLogin
+POST {{baseUrl}}/public/office/login
+Content-Type:  {{contentType}}
+
+{
+    "username": "admin",
+    "password": "kkmjl"
+    
+}
+
+###
+# @name createNomineeBankAccount
+@authToken = {{AdminLogin.response.body.token}}
+POST {{baseUrl}}/office/nominee-bank-account
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "NomineeId": 1594978554517,
+  "bankCode": "KBANK",
+  "accountNo": "0108511452",
+  "type": "DEPOSIT",
+  "username": null,
+  "password": null,
+  "smsTelNo": "0841326962"
+}
+
+###
+# @name UpdateNomineeBankAccount
+PUT {{baseUrl}}/office/nominee-bank-account
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "NomineeBankAccountId": 1594984727016,
+  "active": false
+}
+
+###
+# @name NomineeBankAccountList
+POST {{baseUrl}}/office/nominee-bank-account/list
+Content-Type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "pagination": {
+    "page": 1,
+    "itemsPerPage": 10
+  },
+  "text": "",
+  "type": "DEPOSIT",
+  "active": false
+}
+
+
+###
+# @name NomineeBankAccountFilter
+GET {{baseUrl}}/office/nominee-bank-account/filter
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
+
+###
+# @name NomineeBankAccountFilterType
+GET {{baseUrl}}/office/nominee-bank-account/filter/type
+Content-Type:  {{contentType}}
+Authorization: Bearer {{authToken}}
