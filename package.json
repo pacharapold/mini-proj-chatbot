@@ -4,7 +4,6 @@
   "description": "imi api server",
   "main": "index.js",
   "scripts": {
-    "heroku-prebuild": "echo This runs before Heroku installs dependencies. && npm ci",
     "build": "tsc -b -v",
     "clean": "tsc -b --clean",
     "start": "NODE_ENV=production node ./dist/index.js",
@@ -23,7 +22,6 @@
     "npm": "6.13.4"
   },
   "dependencies": {
-    "@midas-soft/midas-common": "^1.0.36",
     "@types/body-parser": "^1.19.0",
     "@types/node": "^14.0.14",
     "axios": "^0.19.2",

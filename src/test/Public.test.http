@@ -1,12 +1,12 @@
 # My Variables
 @contentType = application/json
 # @baseUrl = https://api.gwalletdev.com/api
-@baseUrl = http://localhost:9999/api
+@baseUrl = http://localhost:9999
 @site = jumbo789
 
 ###
 # @name RequestTelNo
-POST {{baseUrl}}/public/new
+POST {{baseUrl}}/webhook
 Content-Type:  {{contentType}}
 Site: {{site}}
 
