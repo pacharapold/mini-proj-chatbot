@@ -57,8 +57,7 @@ export default {
                 contents: [
                   {
                     type: 'image',
-                    url:
-                      'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
+                    url: `${profile.pictureUrl}`,
                   },
                 ],
               },
@@ -74,11 +73,27 @@ export default {
                     contents: [
                       {
                         type: 'text',
-                        text: 'title 3',
+                        text: 'คุณ',
                       },
                       {
                         type: 'text',
-                        text: 'detail 3',
+                        text: `${profile.displayName}`,
+                      },
+                    ],
+                  },
+                  {
+                    type: 'box',
+                    layout: 'horizontal',
+                    margin: 'lg',
+                    spacing: 'sm',
+                    contents: [
+                      {
+                        type: 'text',
+                        text: 'ยอดเงิน',
+                      },
+                      {
+                        type: 'text',
+                        text: `${gm.balance}`,
                       },
                     ],
                   },
@@ -94,23 +109,7 @@ export default {
                       },
                       {
                         type: 'text',
-                        text: 'detail 3',
-                      },
-                    ],
-                  },
-                  {
-                    type: 'box',
-                    layout: 'horizontal',
-                    margin: 'lg',
-                    spacing: 'sm',
-                    contents: [
-                      {
-                        type: 'text',
-                        text: 'title 3',
-                      },
-                      {
-                        type: 'text',
-                        text: 'detail 3',
+                        text: `${gm.username}`,
                       },
                     ],
                   },
