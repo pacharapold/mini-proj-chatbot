@@ -4,7 +4,6 @@
   "description": "imi api server",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "npm ci",
     "build": "tsc -b -v",
     "clean": "tsc -b --clean",
     "start": "NODE_ENV=production node ./dist/index.js",
