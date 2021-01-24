@@ -55,12 +55,14 @@ export default {
         },
       ],
     });
-    const res = await axios.post(
+    const req = await axios.post(
       `https://api.line.me/v2/bot/message/reply`,
       body,
-      { headers },
+      {
+        headers,
+      },
     );
-    console.log(JSON.stringify(res));
+    return req;
   },
 
   async getProfile(userId: string) {
