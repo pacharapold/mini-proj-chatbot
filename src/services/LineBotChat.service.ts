@@ -64,8 +64,10 @@ export default {
   },
 
   async getProfile(userId: string) {
-    return (await axios.get(`https://api.line.me/v2/bot/profile/${userId}`, {
-      headers,
-    })) as IProfile;
+    return (
+      await axios.get(`https://api.line.me/v2/bot/profile/${userId}`, {
+        headers,
+      })
+    ).data as IProfile;
   },
 };
