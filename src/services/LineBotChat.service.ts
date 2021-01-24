@@ -43,7 +43,7 @@ export default {
     }
     const flex = [
       {
-        type: 'bubble',
+        type: 'flex',
         size: 'giga',
         direction: 'ltr',
         body: {
