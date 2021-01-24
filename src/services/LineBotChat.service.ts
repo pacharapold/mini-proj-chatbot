@@ -4,6 +4,11 @@ import config from '@config/config';
 import axios from 'axios';
 import BigNumber from 'bignumber.js';
 
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${config.LINE_ACCESS_TOKEN}`,
+};
+
 export default {
   async response({ events }: IBotWebhook) {
     const replyToken = events[0].replyToken;
@@ -41,10 +46,6 @@ export default {
   },
 
   async replyMsg(replyToken: string, msg: string) {
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${config.LINE_ACCESS_TOKEN}`,
-    };
     const body = JSON.stringify({
       replyToken,
       messages: [
@@ -63,8 +64,8 @@ export default {
   },
 
   async getProfile(userId: string) {
-    return (await axios.get(
-      `https://api.line.me/v2/bot/profile/${userId}`,
-    )) as IProfile;
+    return (await axios.get(`https://api.line.me/v2/bot/profile/${userId}`, {
+      headers,
+    })) as IProfile;
   },
 };
