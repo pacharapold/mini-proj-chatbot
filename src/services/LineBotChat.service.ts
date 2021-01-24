@@ -56,7 +56,7 @@ export default {
                 layout: 'vertical',
                 contents: [
                   {
-                    type: 'image',
+                    type: 'icon',
                     url: `${profile.pictureUrl}`,
                   },
                 ],
@@ -73,11 +73,7 @@ export default {
                     contents: [
                       {
                         type: 'text',
-                        text: 'คุณ',
-                      },
-                      {
-                        type: 'text',
-                        text: `${profile.displayName}`,
+                        text: `คุณ ${profile.displayName}`,
                       },
                     ],
                   },
@@ -89,11 +85,7 @@ export default {
                     contents: [
                       {
                         type: 'text',
-                        text: 'ยอดเงิน',
-                      },
-                      {
-                        type: 'text',
-                        text: `${gm.balance}`,
+                        text: `ยอดเงิน: ${gm.balance}`,
                       },
                     ],
                   },
@@ -105,11 +97,7 @@ export default {
                     contents: [
                       {
                         type: 'text',
-                        text: 'title 3',
-                      },
-                      {
-                        type: 'text',
-                        text: `${gm.username}`,
+                        text: `username: ${gm.username}`,
                       },
                     ],
                   },
