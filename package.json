@@ -4,6 +4,7 @@
   "description": "imi api server",
   "main": "index.js",
   "scripts": {
+    "heroku-prebuild": "echo This runs before Heroku installs dependencies. && npm ci",
     "build": "tsc -b -v",
     "clean": "tsc -b --clean",
     "start": "NODE_ENV=production node ./dist/index.js",
