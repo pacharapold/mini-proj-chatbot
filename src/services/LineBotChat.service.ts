@@ -41,83 +41,85 @@ export default {
         lastBalanceUpdate: new Date().toISOString(),
       });
     }
-    const flex = {
-      type: 'bubble',
-      size: 'giga',
-      direction: 'ltr',
-      body: {
-        type: 'box',
-        layout: 'horizontal',
-        contents: [
-          {
-            type: 'box',
-            layout: 'vertical',
-            contents: [
-              {
-                type: 'icon',
-                url: `${profile.pictureUrl}`,
-                align: 'start',
-                aspectMode: 'cover',
-              },
-            ],
-          },
-          {
-            type: 'box',
-            layout: 'vertical',
-            contents: [
-              {
-                type: 'box',
-                layout: 'horizontal',
-                contents: [
-                  {
-                    type: 'text',
-                    text: 'คุณ',
-                  },
-                  {
-                    type: 'text',
-                    text: `${profile.displayName}`,
-                  },
-                ],
-              },
-              {
-                type: 'box',
-                layout: 'horizontal',
-                contents: [
-                  {
-                    type: 'text',
-                    text: 'ยอดเงิน',
-                  },
-                  {
-                    type: 'text',
-                    text: `${gm.balance}`,
-                  },
-                ],
-              },
-              {
-                type: 'box',
-                layout: 'horizontal',
-                contents: [
-                  {
-                    type: 'text',
-                    text: 'username',
-                  },
-                  {
-                    type: 'text',
-                    text: `${gm.username}`,
-                  },
-                ],
-              },
-            ],
-            justifyContent: 'center',
-          },
-        ],
+    const flex = [
+      {
+        type: 'bubble',
+        size: 'giga',
+        direction: 'ltr',
+        body: {
+          type: 'box',
+          layout: 'horizontal',
+          contents: [
+            {
+              type: 'box',
+              layout: 'vertical',
+              contents: [
+                {
+                  type: 'icon',
+                  url: `${profile.pictureUrl}`,
+                  align: 'start',
+                  aspectMode: 'cover',
+                },
+              ],
+            },
+            {
+              type: 'box',
+              layout: 'vertical',
+              contents: [
+                {
+                  type: 'box',
+                  layout: 'horizontal',
+                  contents: [
+                    {
+                      type: 'text',
+                      text: 'คุณ',
+                    },
+                    {
+                      type: 'text',
+                      text: `${profile.displayName}`,
+                    },
+                  ],
+                },
+                {
+                  type: 'box',
+                  layout: 'horizontal',
+                  contents: [
+                    {
+                      type: 'text',
+                      text: 'ยอดเงิน',
+                    },
+                    {
+                      type: 'text',
+                      text: `${gm.balance}`,
+                    },
+                  ],
+                },
+                {
+                  type: 'box',
+                  layout: 'horizontal',
+                  contents: [
+                    {
+                      type: 'text',
+                      text: 'username',
+                    },
+                    {
+                      type: 'text',
+                      text: `${gm.username}`,
+                    },
+                  ],
+                },
+              ],
+              justifyContent: 'center',
+            },
+          ],
+        },
+        action: {
+          type: 'message',
+          label: 'profile',
+          text: 'profile',
+        },
       },
-      action: {
-        type: 'message',
-        label: 'profile',
-        text: 'profile',
-      },
-    };
+    ];
     await this.replyFlexMsg(replyToken, flex);
   },
 
