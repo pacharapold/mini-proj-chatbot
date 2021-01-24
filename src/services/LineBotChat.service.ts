@@ -31,18 +31,94 @@ export default {
   async register(userId: string, replyToken: string) {
     const profile = await this.getProfile(userId);
     const count = await Gambler.count({});
-    let check = await Gambler.findOne({ where: { userId } });
-    if (!check) {
+    let gm = await Gambler.findOne({ where: { userId } });
+    if (!gm) {
       // * Create Gambler
-      check = await Gambler.create({
+      gm = await Gambler.create({
         userId,
         username: `HIFIVE-${count + 1}`,
         balance: new BigNumber(0),
         lastBalanceUpdate: new Date().toISOString(),
       });
     }
-    const msg = `คุณ ${profile.displayName}\nยอดเงินคงเหลือ ${check.balance}\nusername: ${check.username}`;
-    await this.replyMsg(replyToken, msg);
+    const flex = {
+      type: 'bubble',
+      size: 'giga',
+      direction: 'ltr',
+      body: {
+        type: 'box',
+        layout: 'horizontal',
+        contents: [
+          {
+            type: 'box',
+            layout: 'vertical',
+            contents: [
+              {
+                type: 'icon',
+                url: `${profile.pictureUrl}`,
+                align: 'start',
+                aspectMode: 'cover',
+              },
+            ],
+          },
+          {
+            type: 'box',
+            layout: 'vertical',
+            contents: [
+              {
+                type: 'box',
+                layout: 'horizontal',
+                contents: [
+                  {
+                    type: 'text',
+                    text: 'คุณ',
+                  },
+                  {
+                    type: 'text',
+                    text: `${profile.displayName}`,
+                  },
+                ],
+              },
+              {
+                type: 'box',
+                layout: 'horizontal',
+                contents: [
+                  {
+                    type: 'text',
+                    text: 'ยอดเงิน',
+                  },
+                  {
+                    type: 'text',
+                    text: `${gm.balance}`,
+                  },
+                ],
+              },
+              {
+                type: 'box',
+                layout: 'horizontal',
+                contents: [
+                  {
+                    type: 'text',
+                    text: 'username',
+                  },
+                  {
+                    type: 'text',
+                    text: `${gm.username}`,
+                  },
+                ],
+              },
+            ],
+            justifyContent: 'center',
+          },
+        ],
+      },
+      action: {
+        type: 'message',
+        label: 'profile',
+        text: 'profile',
+      },
+    };
+    await this.replyFlexMsg(replyToken, flex);
   },
 
   async replyMsg(replyToken: string, msg: string) {
@@ -54,6 +130,21 @@ export default {
           text: msg,
         },
       ],
+    });
+    const req = await axios.post(
+      `https://api.line.me/v2/bot/message/reply`,
+      body,
+      {
+        headers,
+      },
+    );
+    return req;
+  },
+
+  async replyFlexMsg(replyToken: string, msg: any) {
+    const body = JSON.stringify({
+      replyToken,
+      messages: { ...msg },
     });
     const req = await axios.post(
       `https://api.line.me/v2/bot/message/reply`,
