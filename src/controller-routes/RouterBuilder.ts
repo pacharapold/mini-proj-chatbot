@@ -1,6 +1,5 @@
 import { Role } from '@common/enum/Role.enum';
 import authorizationMiddleware from '@middleware/Authorization.middleware';
-import uiVersionMiddleware from '@middleware/UiVersion.middleware';
 import validationMiddleware from '@middleware/Validation.middleware';
 import express, { IRouter, NextFunction, Request, Response } from 'express';
 import paramValidationMiddleware from '@middleware/ParamValidation.middleware';
@@ -32,7 +31,6 @@ export default class RouterBuilder {
       authorizationMiddleware(),
       validationMiddleware(option.type),
       paramValidationMiddleware(option.param),
-      uiVersionMiddleware(),
       this.createHandler(service, option.status),
     );
   }
@@ -47,7 +45,6 @@ export default class RouterBuilder {
       authorizationMiddleware(),
       validationMiddleware(option.type),
       paramValidationMiddleware(option.param),
-      uiVersionMiddleware(),
       this.createHandler(service, option.status),
     );
   }
@@ -61,7 +58,6 @@ export default class RouterBuilder {
       path,
       authorizationMiddleware(),
       paramValidationMiddleware(option.param),
-      uiVersionMiddleware(),
       this.createHandler(service, option.status),
     );
   }
@@ -75,7 +71,6 @@ export default class RouterBuilder {
       path,
       authorizationMiddleware(),
       paramValidationMiddleware(option.param),
-      uiVersionMiddleware(),
       this.createHandler(service, option.status),
     );
   }

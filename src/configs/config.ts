@@ -1,4 +1,3 @@
-import { IAgentDetail } from '@common/type/Config.interface';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -31,4 +30,5 @@ export default {
   ],
   USERNAME_PREFIX: process.env.USERNAME_PREFIX!,
   ADMIN_PASS: process.env.ADMIN_PASS!,
+  LINE_ACCESS_TOKEN: process.env.LINE_ACCESS_TOKEN!,
 };
