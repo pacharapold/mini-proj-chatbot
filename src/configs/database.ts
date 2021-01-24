@@ -24,7 +24,10 @@ export const database: Sequelize = new Sequelize(config.DB, {
   logging: false,
   dialect: 'postgres',
   dialectOptions: {
-    ssl: true,
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
 });
 
