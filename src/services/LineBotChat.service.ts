@@ -56,7 +56,7 @@ export default {
                 layout: 'vertical',
                 contents: [
                   {
-                    type: 'icon',
+                    type: 'image',
                     url: `${profile.pictureUrl}`,
                   },
                 ],
