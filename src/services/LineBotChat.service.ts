@@ -146,7 +146,7 @@ export default {
   async replyFlexMsg(replyToken: string, msg: any) {
     const body = JSON.stringify({
       replyToken,
-      messages: { ...msg },
+      messages: msg,
     });
     const req = await axios.post(
       `https://api.line.me/v2/bot/message/reply`,
