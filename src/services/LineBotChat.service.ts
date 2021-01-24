@@ -47,6 +47,7 @@ export default {
         altText: 'Flex Message',
         contents: {
           type: 'bubble',
+          size: 'giga',
           body: {
             type: 'box',
             layout: 'horizontal',
